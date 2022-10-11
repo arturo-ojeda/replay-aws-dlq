@@ -9,7 +9,8 @@ const schema = joi.object({
   to: joi
     .string()
     .uri()
-    .required()
+    .required(),
+  attribute: joi.string()
 });
 
 const validateParams = params => {
@@ -22,8 +23,8 @@ const validateParams = params => {
 
 if (require.main === module) {
   (async function() {
-    const [from, to] = process.argv.slice(2);
-    const params = { from, to };
+    const [from, to, attribute] = process.argv.slice(3);
+    const params = { from, to, attribute };
     if (validateParams(params)) await redrive(params);
   })();
 }

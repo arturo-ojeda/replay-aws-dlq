@@ -23,7 +23,7 @@ const validateParams = params => {
 
 if (require.main === module) {
   (async function() {
-    const [from, to, attribute] = process.argv.slice(3);
+    const [from, to, attribute] = process.argv.slice(2);
     const params = { from, to, attribute };
     if (validateParams(params)) await redrive(params);
   })();
